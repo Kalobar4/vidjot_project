@@ -12,7 +12,11 @@ mongoose.connect('mongodb://localhost/vidjot-dev',{
 .then(()=> {console.log('MongoDB is connected.')})
 .catch(err=> {if(err){console.log(err)}})
 
-app.engine('handlebars', exphbs({
+//Load Idea model
+require('./models/Idea');
+const Idea = mongoose.model('ideas');
+
+app.engine('handlebars', exphbs({ 
   defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
